@@ -1,0 +1,7 @@
+<div class="container fadeIn">
+  <h1>Home</h1>
+
+  <p-dropdown [options]="cities1" [(ngModel)]="selectedCity1" placeholder="Select a City" editable="true" [showClear]="true" filter="true"></p-dropdown>
+  {{selectedCity1|json}}
+
+</div>

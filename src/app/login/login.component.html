@@ -1,0 +1,34 @@
+<div class="container fadeIn" *ngIf="isLoginCalled">
+  <h1>登入頁面</h1>
+  <hr>
+
+  <div class="card shadow">
+    <div class="card-body">
+      <form #loginform="ngForm" [formGroup]="fg">
+        <div class="form-group">
+          <label for="account">帳號</label>
+          <input class="form-control" placeholder="輸入帳號" formControlName="account" id="account"
+          [ngClass]="{'invalid': account.errors && (account.touched || account.dirty)}">
+
+          <div *ngIf="account.errors?.required && (account.touched || account.dirty)" class="alert alert-danger">
+            請輸入帳號
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">密碼</label>
+          <input class="form-control" type="password" placeholder="輸入密碼" formControlName="password" id="password"
+          [ngClass]="{'invalid': password.errors && (password.touched || password.dirty)}">
+
+          <div *ngIf="password.errors?.required && (password.touched || password.dirty)" class="alert alert-danger">
+            請輸入密碼
+          </div>
+        </div>
+
+        <div class="alert alert-danger fadeIn" *ngIf="isLoginFailed">帳號密碼錯誤</div>
+
+        <button class="btn btn-primary" [disabled]="!fg.valid" (click)="login()">登入</button>
+      </form>
+    </div>
+  </div>
+</div>
